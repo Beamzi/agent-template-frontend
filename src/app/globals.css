@@ -101,4 +101,44 @@ html {
 
 /* Custom component classes using @apply */
 @layer components {
+  .btn-primary {
+    position: relative;
+    overflow: hidden;
+    @apply rounded-[var(--radius-md)] px-[var(--spacing-md)] py-[var(--spacing-sm)];
+  }
+
+  .btn-primary {
+    /* border: var(--border); */
+    background: var(--color-primary);
+    @apply text-white;
+  }
+
+  .input-field {
+    @apply border-[var(--border)] px-[var(--spacing-sm)] py-[var(--spacing-xs)] rounded-[var(--radius-md)] bg-[var(--background)] text-[var(--foreground)] focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)];
+  }
+
+  .focus-outline {
+    outline: 2px solid #a3a3a3; /* neutral-400 for light mode */
+    outline-offset: -4px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .focus-outline {
+      outline-color: #262626; /* neutral-800 for dark mode */
+    }
+  }
+}
+
+/* Outside @layer so it overrides CSS module card styles (testimonial + feature carousels). */
+.card-hovered {
+  transition:
+    border-color 0.2s ease-out,
+    box-shadow 0.2s ease-out;
+}
+
+.card-hovered:hover {
+  border-color: var(--color-primary);
+  box-shadow:
+    0 12px 24px 0,
+    color-mix(in srgb, var(--color-primary) 30%, transparent);
 }
